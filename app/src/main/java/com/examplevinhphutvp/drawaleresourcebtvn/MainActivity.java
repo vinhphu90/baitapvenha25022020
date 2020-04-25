@@ -6,27 +6,41 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    TextView Tvtext ;
-    Button mbtn;
+//    TextView Tvtext ;
+//    Button mbtn;
+    TextView txtRating;
+    RatingBar ratingBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Tvtext = findViewById(R.id.textView);
-        mbtn = findViewById(R.id.button);
+//        Tvtext = findViewById(R.id.textView);
+//        mbtn = findViewById(R.id.button);
+//
+//        mbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Tvtext.setPaintFlags(Tvtext.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//            }
+//        });
+        txtRating = (TextView)findViewById(R.id.textview5);
+        ratingBar = (RatingBar)findViewById(R.id.ratingbar);
 
-        mbtn.setOnClickListener(new View.OnClickListener() {
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
-            public void onClick(View v) {
-                Tvtext.setPaintFlags(Tvtext.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                txtRating.setText(rating +"/5");
             }
         });
 
 
 
     }
+
 }
